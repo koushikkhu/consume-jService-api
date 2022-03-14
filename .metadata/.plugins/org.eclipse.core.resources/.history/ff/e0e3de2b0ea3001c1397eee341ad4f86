@@ -1,0 +1,6 @@
+package com.au.app.controller;
+
+@Controller
+public class CategoryController {
+
+}

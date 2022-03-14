@@ -1,0 +1,27 @@
+package com.au.app.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.au.app.model.Clue;
+import com.au.app.service.ClueService;
+
+@Controller
+public class ClueController {
+
+	@Autowired
+	private ClueService clueService;
+	
+	//http://localhost:8081/clues/clue/1
+	@RequestMapping("/clue/{id}")
+	public String getClue(@PathVariable("id") long id, @ModelAttribute("clue") Clue clue, Model model) {
+		clue = clueService.getClue(id);
+		model.addAttribute("clue", clue);
+		return "next";
+	}
+
+}

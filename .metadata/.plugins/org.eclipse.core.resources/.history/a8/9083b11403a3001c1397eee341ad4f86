@@ -1,0 +1,29 @@
+package com.au.app.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.au.app.model.Clue;
+import com.au.app.service.ClueService;
+import com.au.app.service.ClueServiceImpl;
+
+@Controller
+public class ClueController {
+	private ClueService clueService;
+	
+	public ClueController(ClueService clueService) {
+		this.clueService = clueService;
+	}
+	
+	//http://localhost:8081/clues/clue/1
+	@RequestMapping("/clue/{id}")
+	public String getClue(@PathVariable("id") long id, @ModelAttribute("clue") Clue clue, Model model) {
+		clue = clueServiceImpl.getClue(id);
+		model.addAttribute("clue", clue);
+		return "next";
+	}
+
+}

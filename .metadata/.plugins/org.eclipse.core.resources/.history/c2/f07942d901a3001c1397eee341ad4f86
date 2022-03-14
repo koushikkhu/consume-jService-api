@@ -1,0 +1,11 @@
+package com.au.app.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.client.RestTemplate;
+
+import com.au.app.model.Clue;
+
+public interface ClueService {
+	Clue getClue(long id);
+}

@@ -1,0 +1,7 @@
+package com.au.app.service;
+
+import com.au.app.model.Clue;
+
+public interface ClueService {
+	Clue getClue(long id);
+}

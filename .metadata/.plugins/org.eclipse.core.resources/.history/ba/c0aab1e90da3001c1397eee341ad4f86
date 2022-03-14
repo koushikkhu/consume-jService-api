@@ -1,0 +1,5 @@
+package com.au.app.model;
+
+public class Category {
+
+}

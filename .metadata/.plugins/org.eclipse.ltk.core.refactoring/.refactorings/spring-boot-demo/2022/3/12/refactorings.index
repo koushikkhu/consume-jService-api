@@ -1,0 +1,11 @@
+1647196678800	Rename package 'com.howtodoinjava.app.controller'
+1647197092013	Rename package 'com.howtodoinjava.app.model'
+1647198137901	Rename type 'CategoryService'
+1647198151782	Rename type 'ClueService'
+1647203175428	Copy file
+1647203217455	Move 'SpringBootWebApplication.java' to 'app'
+1647203644589	Move 'SpringBootWebApplication.java' to 'controller'
+1647223457211	Copy file
+1647223695020	Rename resource 'clue.jsp'
+1647229191582	Copy file
+1647263222966	Rename type 'SpringBootWebApplication'

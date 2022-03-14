@@ -1,0 +1,20 @@
+package com.au.app.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.client.RestTemplate;
+
+import com.au.app.service.CategoryService;
+
+@Controller
+public class CategoryController {
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	@Value("${rootJServiceApiURL}")
+	private String rootJServiceApiURL;
+	
+	@Autowired
+	private CategoryService categoryService;
+}

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<html lang="en">
+<body>
+	<div>
+		<div>
+			<h1>Consuming jService API</h1>
+			Click on this <strong><a href="clueView">link</a></strong> to see a Clue.
+		</div>
+	</div>
+</body>
+</html>

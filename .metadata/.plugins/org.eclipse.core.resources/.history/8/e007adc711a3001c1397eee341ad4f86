@@ -1,0 +1,34 @@
+package com.au.app.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.au.app.model.Category;
+import com.au.app.service.CategoryService;
+
+@Controller
+public class CategoryController {
+	@Autowired
+	private CategoryService categoryService;
+	
+	//http://localhost:8080/categories
+	@RequestMapping("/categories")
+	public String getCategories(@ModelAttribute("clue") List<Category> categories, Model model) {
+		categories = categoryService.getCategories();
+		model.addAttribute("categories", categories);
+		return "categories";
+	}
+	
+	//http://localhost:8080/categories/category/1
+	@RequestMapping("/catetory/{id}")
+	public Category getCategory(@PathVariable("id") long id) {
+		Category category = restTemplate.getForObject(rootJServiceApiURL+"/categories/" + id + ".json", Category.class); 
+		return category;			
+	}		
+}

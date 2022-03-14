@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<html lang="en">
+<body>
+	<div>
+		<div>
+			<h1>Another page</h1>
+			<h2>Hello ${clue.answer}</h2>
+			
+			Click on this <strong><a href="/">link</a></strong> to visit previous page.
+			<input type="button" name="button" onclick="remove();" />
+			function remove()
+			{
+				window.location = 'http://localhost:8080/clues/clue/3';
+			}			
+		</div>
+	</div>
+</body>
+</html>

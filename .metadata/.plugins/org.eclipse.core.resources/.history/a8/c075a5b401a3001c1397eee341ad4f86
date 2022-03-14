@@ -1,0 +1,5 @@
+package com.au.app.service;
+
+public interface ClueService {
+
+}

@@ -1,0 +1,46 @@
+package com.au.app.controller;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.client.RestTemplate;
+
+import com.au.app.model.Category;
+import com.au.app.model.Clue;
+
+@Controller
+public class IndexController {
+
+	@RequestMapping("/")
+	public String home(Map<String, Object> model) {
+		model.put("message", "HowToDoInJava Reader !!");
+		return "index";
+	}
+	
+	@RequestMapping("/next")
+	public String next(Map<String, Object> model) {
+		model.put("message", "You are in new page !!");
+		return "next";
+	}	
+	
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	@Value("${rootJServiceApiURL}")
+	private String rootJServiceApiURL;
+	
+	//http://localhost:8081/categories/category/1
+	@RequestMapping("/catetory/{id}")
+	public Category getCategory(@PathVariable("id") long id) {
+		Category category = restTemplate.getForObject(rootJServiceApiURL+"/categories/" + id + ".json", Category.class); 
+		return category;			
+	}	
+}

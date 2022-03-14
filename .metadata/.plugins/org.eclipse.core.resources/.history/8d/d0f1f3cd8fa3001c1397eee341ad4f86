@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<html lang="en">
+<body>
+	<div>
+		<div>
+			<h1>Consuming jService API</h1>
+			Click on this <strong><a href="next">link</a></strong> to see a Clue.
+		</div>
+	</div>
+	<script>
+	function randomNumber(min, max) { 
+	    return Math.floor(Math.random() * (max - min + 1) + min);
+	}	
+	function randomclue() {
+		var clueId = randomNumber(1,100);
+	  	window.location = 'http://localhost:8080/clues/clue/' + clueId;
+	}
+	</script>	
+</body>
+</html>

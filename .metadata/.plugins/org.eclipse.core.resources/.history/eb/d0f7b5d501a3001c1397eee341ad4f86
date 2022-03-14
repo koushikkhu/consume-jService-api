@@ -1,0 +1,20 @@
+package com.au.app.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.client.RestTemplate;
+
+import com.au.app.model.Clue;
+
+public interface ClueService {
+	
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	@Value("${rootJServiceApiURL}")
+	private String rootJServiceApiURL;	
+
+	Clue getClue(long id) {
+		clue = restTemplate.getForObject(rootJServiceApiURL + "/clues/" + id + ".json", Clue.class);
+	}
+}

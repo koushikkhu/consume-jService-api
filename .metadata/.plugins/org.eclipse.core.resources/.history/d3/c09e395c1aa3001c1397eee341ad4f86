@@ -1,0 +1,55 @@
+package com.au.app.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.au.app.model.Clue;
+
+@Service
+public class ClueServiceImpl implements ClueService{
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	@Value("${rootJServiceApiURL}")
+	private String rootJServiceApiURL;	
+
+	public Clue getClueByID(long id) {
+		return restTemplate.getForObject(rootJServiceApiURL + "/clues/" + id + ".json", Clue.class);
+	}
+	
+
+	public List<Clue> getCluesByAirDate(String airdate) {
+		ResponseEntity<List<Clue>> cluesResponse =
+		        restTemplate.exchange(rootJServiceApiURL+"/clues",
+		                    HttpMethod.GET, null, new ParameterizedTypeReference<List<Clue>>() {
+		            });
+		List<Clue> clues = cluesResponse.getBody();
+		//int i=0;
+		/*clues.forEach(c->{
+			//String aDate = c.getAirdate();
+			System.out.println(c.getAirdate());
+			//if(aDate.equalsIgnoreCase(airdate))
+			//	System.out.println(i+1);
+		});*/
+		//return clues.stream().filter(clue -> clue.getAirdate() == airdate).toList();
+		List<Clue> cluesFiltered = clues.stream().filter(clue -> clue.getAirdate().equals(airdate)).toList();
+		//return clues.stream().filter(clue -> clue.getAirdate().equals(airdate)).toList();
+		return cluesFiltered;
+	}
+	
+	public List<Clue> getCluesByCategory(long categoryID) {
+		ResponseEntity<List<Clue>> cluesResponse =
+		        restTemplate.exchange(rootJServiceApiURL+"/clues",
+		                    HttpMethod.GET, null, new ParameterizedTypeReference<List<Clue>>() {
+		            });
+		List<Clue> clues = cluesResponse.getBody();
+		return clues.stream().filter(clue -> clue.getCategory_id() == categoryID).toList();
+	}
+}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<html lang="en">
+<body>
+	<div>
+		<div>
+			<h1>Categories</h1>
+			window.onload = displayListOfCategories();
+		</div>
+	</div>
+	<script>
+		function displayListOfCategories() {
+			'Hi'
+		}
+	</script>
+</body>
+</html>
